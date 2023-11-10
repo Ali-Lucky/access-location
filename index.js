@@ -25,6 +25,16 @@ async function getCountryFromIP(ipAddress) {
     }
 }
 
+var requestIP = require('request-ip');
+
+app.get('/t',function(request, response) {
+
+    var clientIp = requestIP.getClientIp(request);
+    return response.send(clientIp)
+    console.log(clientIp);
+
+});
+
 app.get('/test', async (req, res) => {
     try {
         const ip = req.ip; // Get the IP address from the request
